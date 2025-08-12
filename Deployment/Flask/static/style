@@ -1,0 +1,20 @@
+body {
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  background: #f2fbf4;
+  color: #173b2e;
+  margin: 0; padding: 0;
+}
+.container {
+  max-width: 800px; margin: 40px auto; padding: 24px;
+  background: #fff; border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+}
+h1 { margin-top: 0; }
+.upload-form { display: flex; gap: 12px; margin: 16px 0; }
+.upload-form input[type=file] { flex: 1; }
+.upload-form button {
+  background: #239f5f; color: #fff; border: 0; padding: 10px 16px; border-radius: 8px; cursor: pointer;
+}
+.upload-form button:hover { background: #1e8b53; }
+.result img { max-width: 100%; border-radius: 12px; margin: 12px 0; }
+.error { color: #b00020; background: #ffecec; padding: 10px; border-radius: 8px; }

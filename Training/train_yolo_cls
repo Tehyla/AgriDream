@@ -1,0 +1,17 @@
+# Train YOLOv8 Classification (VS Code-friendly; run in Colab with `!python training/train_yolo_cls.py`)
+from ultralytics import YOLO
+import os
+
+DATA_DIR = os.environ.get("DATA_DIR", "dataset")
+EPOCHS = int(os.environ.get("EPOCHS", "20"))
+IMGSZ = int(os.environ.get("IMGSZ", "224"))
+MODEL_NAME = os.environ.get("MODEL_NAME", "yolov8n-cls.pt")
+
+def main():
+    model = YOLO(MODEL_NAME)
+    model.train(data=DATA_DIR, epochs=EPOCHS, imgsz=IMGSZ)
+    metrics = model.val()
+    print(metrics)
+
+if __name__ == "__main__":
+    main()

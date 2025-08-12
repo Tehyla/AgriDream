@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>AgriDream Soil Classifier</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <div class="container">
+    <h1>AgriDream Soil Classifier</h1>
+    <p>Upload a soil image to get soil type, crop suggestions, and improvement tips.</p>
+
+    <form action="/predict" method="POST" enctype="multipart/form-data" class="upload-form">
+      <input type="file" name="image" accept="image/*" required />
+      <button type="submit">Analyze</button>
+    </form>
+
+    {% if error %}
+      <div class="error">{{ error }}</div>
+    {% endif %}
+
+    {% if result %}
+      <div class="result">
+        <img src="{{ result.image }}" alt="Uploaded" />
+        <h2>Detected Soil: {{ result.soil }} ({{ result.confidence }})</h2>
+        <h3>Suggested Crops</h3>
+        <ul>
+          {% for c in result.crops %}<li>{{ c }}</li>{% endfor %}
+        </ul>
+        <h3>Improvement Tips</h3>
+        <p>{{ result.tips }}</p>
+      </div>
+    {% endif %}
+  </div>
+</body>
+</html>

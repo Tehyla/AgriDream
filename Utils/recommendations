@@ -1,0 +1,34 @@
+{
+  "clay": {
+    "crops": [
+      "Rice",
+      "Broccoli",
+      "Cabbage"
+    ],
+    "tips": "Clay holds water. Improve drainage and mix in organic compost."
+  },
+  "sandy": {
+    "crops": [
+      "Carrots",
+      "Lettuce",
+      "Peanuts"
+    ],
+    "tips": "Sandy drains fast. Add mulch and compost to retain moisture."
+  },
+  "loam": {
+    "crops": [
+      "Maize",
+      "Tomatoes",
+      "Sunflowers"
+    ],
+    "tips": "Loam is balanced. Maintain fertility with crop rotation + compost."
+  },
+  "silt": {
+    "crops": [
+      "Onions",
+      "Garlic",
+      "Spinach"
+    ],
+    "tips": "Silt compacts easily. Add organic matter; avoid heavy machinery."
+  }
+}
