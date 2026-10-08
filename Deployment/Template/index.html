@@ -1,37 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>AgriDream Soil Classifier</title>
-  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
-</head>
-<body>
-  <div class="container">
-    <h1>AgriDream Soil Classifier</h1>
-    <p>Upload a soil image to get soil type, crop suggestions, and improvement tips.</p>
-
-    <form action="/predict" method="POST" enctype="multipart/form-data" class="upload-form">
-      <input type="file" name="image" accept="image/*" required />
-      <button type="submit">Analyze</button>
-    </form>
-
-    {% if error %}
-      <div class="error">{{ error }}</div>
-    {% endif %}
-
-    {% if result %}
-      <div class="result">
-        <img src="{{ result.image }}" alt="Uploaded" />
-        <h2>Detected Soil: {{ result.soil }} ({{ result.confidence }})</h2>
-        <h3>Suggested Crops</h3>
-        <ul>
-          {% for c in result.crops %}<li>{{ c }}</li>{% endfor %}
-        </ul>
-        <h3>Improvement Tips</h3>
-        <p>{{ result.tips }}</p>
-      </div>
-    {% endif %}
-  </div>
-</body>
-</html>
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#1F7A4D"><title>AgriDream — Climate-smart farming</title><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet"><link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}"></head><body><main class="app-shell">
+<section id="authView" class="auth-view"><div class="brand-mark">A</div><div class="eyebrow">CLIMATE-SMART AGRICULTURE</div><h1>Welcome to<br><span>AgriDream.</span></h1><p class="hero-copy">Better information for better farming decisions.</p><form id="loginForm" class="auth-card"><label>Email address</label><input id="email" type="email" placeholder="farmer@example.com" required><label>Password</label><input id="password" type="password" placeholder="••••••••" required><button class="primary-btn" type="submit">Log in <span>→</span></button><p class="auth-note">Prototype account — your details stay on this device.</p></form></section>
+<section id="locationView" class="permission-view hidden"><div class="brand-mark small">A</div><div class="permission-icon">⌖</div><div class="eyebrow">PERSONALISE YOUR EXPERIENCE</div><h2>Let AgriDream know<br>where you farm.</h2><p>We use your location to bring you climate and weather information for your area.</p><div class="permission-card"><div class="permission-row"><span>📍</span><div><strong>Your location</strong><small>Used only to personalise climate information.</small></div></div><div class="permission-row"><span>☁</span><div><strong>Local climate data</strong><small>Weather information for your coordinates.</small></div></div></div><button id="allowLocation" class="primary-btn">Allow location <span>→</span></button><button id="skipLocation" class="text-btn">Not now</button><p id="locationError" class="error-text"></p></section>
+<section id="dashboardView" class="dashboard hidden"><header class="topbar"><div class="brand"><div class="brand-mark tiny">A</div><span>AgriDream</span></div><button id="logoutBtn" class="icon-btn">↗</button></header><div class="dashboard-inner"><div class="welcome-line"><div><span class="muted">GOOD DAY</span><h2>Welcome back.</h2></div><div id="locationBadge" class="location-badge">📍 Locating…</div></div><section class="hero-panel"><div><span class="panel-kicker">YOUR FARMING SNAPSHOT</span><h3>Know your climate.<br>Grow with confidence.</h3><p>AgriDream brings together local climate information and your soil insights to support smarter decisions.</p></div><div class="leaf-art">✦</div></section><div class="section-head"><h3>Today's climate</h3><button id="refreshWeather" class="refresh">Refresh</button></div><section class="weather-grid"><div class="weather-main card"><div class="weather-top"><span id="weatherIcon" class="weather-icon">☀</span><div><span id="weatherCondition">Loading…</span><strong id="temperature">—°</strong></div></div><div class="weather-meta"><span>Feels like <b id="feelsLike">—°</b></span><span>Humidity <b id="humidity">—%</b></span></div></div><div class="card metric"><span>WIND</span><strong id="wind">—</strong><small>km/h</small></div><div class="card metric"><span>RAINFALL</span><strong id="rain">—</strong><small>mm today</small></div></section><section class="next-card card"><div><div class="section-label">NEXT STEP</div><h3>Scan your soil</h3><p>Upload a soil image when you're ready and AgriDream will prepare an analysis.</p></div><button class="outline-btn" onclick="document.getElementById('soilFile').click()">Scan soil</button><input id="soilFile" type="file" accept="image/*" hidden></section><div id="scanStatus" class="scan-status hidden"></div></div></section></main><script src="{{ url_for('static', filename='app.js') }}"></script></body></html>
